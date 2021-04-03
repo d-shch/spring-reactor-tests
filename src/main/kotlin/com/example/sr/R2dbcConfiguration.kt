@@ -1,11 +1,3 @@
-//package com.example.sr
-//
-//import io.r2dbc.spi.ConnectionFactory
-//import org.springframework.beans.factory.annotation.Qualifier
-//import org.springframework.context.annotation.Bean
-//import org.springframework.context.annotation.Configuration
-//import org.springframework.data.r2dbc.config.AbstractR2dbcConfiguration
-//import org.springframework.data.r2dbc.connectionfactory.R2dbcTransactionManager
 import io.r2dbc.spi.ConnectionFactory
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
