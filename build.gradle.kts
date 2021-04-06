@@ -19,6 +19,7 @@ java.sourceCompatibility = JavaVersion.VERSION_11
 
 repositories {
 	mavenCentral()
+	jcenter()
 }
 
 dependencies {
@@ -34,6 +35,7 @@ dependencies {
 	implementation("org.springframework.boot", "spring-boot-starter-data-jdbc")
 	implementation("dev.miku", "r2dbc-mysql")
 	implementation("org.liquibase", "liquibase-core")
+	implementation("io.github.serpro69", "kotlin-faker", "1.6.0")
 
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 	testImplementation("org.junit.jupiter", "junit-jupiter-engine")
@@ -41,7 +43,6 @@ dependencies {
 	testImplementation("io.projectreactor", "reactor-test")
 	testImplementation("io.projectreactor.kotlin", "reactor-kotlin-extensions")
 	testImplementation("org.jetbrains.kotlin", "kotlin-test-junit")
-
 	testImplementation("io.qameta.allure:allure-java-commons:2.12.1")
 }
 

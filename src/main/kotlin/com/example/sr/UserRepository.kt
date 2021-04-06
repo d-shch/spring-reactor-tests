@@ -1,9 +1,6 @@
 package com.example.sr
 
-import reactor.core.publisher.Mono
+import org.springframework.data.repository.reactive.ReactiveCrudRepository
 
-class UserRepository {
-
-    fun create(user: User): Mono<User>
-
+interface UserRepository: ReactiveCrudRepository<UserEntity, Long> {
 }
