@@ -1,0 +1,34 @@
+server:
+  port: 8080
+
+logging.level.org.springframework: INFO
+
+spring:
+  r2dbc:
+    url: r2dbcs:mysql://localhost:3333/sr_db?serverTimezone=Europe/Moscow&useUnicode=yes&characterEncoding=UTF-8
+    username: "db_user"
+    password: "db_password"
+  liquibase:
+    enabled: true
+    change-log: "classpath:/db/changelog/changelog.xml"
+    url: jdbc:mysql://localhost:3333/sr_db?serverTimezone=Europe/Moscow&useUnicode=yes&characterEncoding=UTF-8
+    user: "db_user"
+    password: "db_password"
+
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+
+management:
+  endpoint:
+    health:
+      show-details: always
+      status:
+        http-mapping:
+          down: 500
+          out_of_service: 503
+    prometheus:
+      enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: prometheus, info, health
