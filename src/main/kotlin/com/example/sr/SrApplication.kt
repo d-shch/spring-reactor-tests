@@ -8,6 +8,6 @@ import reactor.core.scheduler.Schedulers
 class SrApplication
 
 fun main(args: Array<String>) {
-	Schedulers.enableMetrics()
-	runApplication<SrApplication>(*args)
+    Schedulers.enableMetrics()
+    runApplication<SrApplication>(*args)
 }

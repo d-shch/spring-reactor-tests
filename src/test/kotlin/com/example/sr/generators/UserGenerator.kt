@@ -1,30 +1,26 @@
 package com.example.sr.generators
 
-import com.example.sr.UserEntity
+import com.example.sr.FirstName
+import com.example.sr.LastName
+import com.example.sr.User
+import com.example.sr.UserId
 import io.github.serpro69.kfaker.Faker
-import org.springframework.boot.test.context.TestComponent
-import java.util.*
 
-@TestComponent
-class UserGenerator: TestObjectGenerator<UserEntity> {
+class UserGenerator : TestObjectGenerator<User> {
 
-    private val id = null
-    private var firstName = { Faker().name.firstName() }
-    private var lastName = { Faker().name.lastName() }
+    private val id: UserId? = null
+    private var firstName = { FirstName(Faker().name.firstName()) }
+    private var lastName = { LastName(Faker().name.lastName()) }
 
-    fun withFirstName(value: String) = this.also { it.firstName = { value } }
-    fun withLastName(value: String) = this.also { it.lastName = { value } }
+    fun withFirstName(value: FirstName) = this.also { it.firstName = { value } }
+    fun withLastName(value: LastName) = this.also { it.lastName = { value } }
 
-    override fun generate(): UserEntity {
-        return UserEntity(
-            id,
-            firstName(),
-            lastName()
+    override fun generate(): User {
+        return User(
+                id,
+                firstName(),
+                lastName()
         )
     }
 }
 
-data class User(
-    val firstName: String,
-    val lastName: String
-)

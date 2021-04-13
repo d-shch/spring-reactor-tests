@@ -63,6 +63,7 @@ configure<io.qameta.allure.gradle.AllureExtension> {
 	autoconfigure = true
 	aspectjweaver = true
 	version = "2.12.1"
+	aspectjVersion = "1.9.4"
 
 	useJUnit5 {
 		version = "2.12.1"

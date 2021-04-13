@@ -5,8 +5,8 @@ import org.springframework.data.relational.core.mapping.Table
 
 @Table("users")
 data class UserEntity(
-    @Id
-    val id: Long?,
-    val firstName: String,
-    val lastName: String
+        @Id
+        var id: Long?,
+        var firstName: String,
+        var lastName: String
 )

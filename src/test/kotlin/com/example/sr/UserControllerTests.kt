@@ -9,23 +9,24 @@ import org.springframework.test.web.reactive.server.WebTestClient
 @AutoConfigureWebTestClient
 class UserControllerTests @Autowired constructor(
         private val webTestClient: WebTestClient,
-        private val userRepository: UserRepository
-): TestBase() {
+        private val userRepository: UserRepository,
+        private val util: UserUtil
+) : TestBase() {
 
     @Test
-    fun `find user by id with annotate steps`() {
+    fun `find user by id`() {
         val userEntity = UserGenerator().generate()
-        val user = userRepository.save(userEntity).block()
+        val user = userRepository.save(util.toEntity(userEntity)).block()
 
         webTestClient
-            .get()
-            .uri("/users/${user!!.id}")
-            .exchange()
-            .expectStatus().isOk
-            .expectBody()
-            .jsonPath("$.id").isNotEmpty
-            .jsonPath("$.firstName").isEqualTo(user.firstName)
-            .jsonPath("$.lastName").isEqualTo(user.lastName)
+                .get()
+                .uri("/users/${user!!.id}")
+                .exchange()
+                .expectStatus().isOk
+                .expectBody()
+                .jsonPath("$.id").isNotEmpty
+                .jsonPath("$.firstName").isEqualTo(user.firstName)
+                .jsonPath("$.lastName").isEqualTo(user.lastName)
     }
 
 }
